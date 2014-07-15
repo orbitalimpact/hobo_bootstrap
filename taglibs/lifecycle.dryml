@@ -6,7 +6,7 @@
     <% transitions = this.lifecycle.publishable_transitions_for(current_user) %>
     <if test="&transitions">
       <% transitions.each do |t| %>
-        <transition-button merge-attrs="&ajax_attrs" transition="&t" class="btn"/>
+        <transition-button merge-attrs="&ajax_attrs" transition="&t" class="btn btn-default"/>
       <% end %>
     </if>
   </div>

@@ -1,6 +1,5 @@
-<!--
-Adds bootstrap styling to `<input-many>`
--->
+<!-- Adds bootstrap styling to `<input-many>` -->
+
 <extend tag="input-many">
   <old-input-many merge>
     <field-list: size="0"/>
