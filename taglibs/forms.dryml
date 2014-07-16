@@ -149,7 +149,7 @@ Supports all attributes supported by `<with-fields>` plus:
          unless="&(tag == 'input' && no_edit == 'skip' && !can_edit?) || (tag == 'view' && no_blanks && this.blank?)"
          param="#{field_method}-field">
 
-      <label class="col-sm-3 control-label"> for="&id_for_this" param="#{field_method}-label" unless="&field_name.blank?">
+      <label class="col-sm-3 control-label" for="&id_for_this" param="#{field_method}-label" unless="&field_name.blank?">
         <%= field_name %>
       </label>
 
