@@ -3,7 +3,7 @@
 <def tag="bootstrap-table-actions">
   <do with="&this_parent">
     <a action="edit" if="&object_url(this, :edit)" param="edit">
-      <i class="glyphicon glyphicon-edit></i>
+      <i class="glyphicon glyphicon-edit"></i>
     </a>
   </do>
   <% if can_delete?(this_parent) %>

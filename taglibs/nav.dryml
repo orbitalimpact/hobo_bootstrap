@@ -39,7 +39,7 @@ Then in your pages you can call the tag like this
 
    -->
 
-<def tag="navigation" attrs="current,include-search"
+<def tag="navigation" attrs="current,include-search">
   <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
 

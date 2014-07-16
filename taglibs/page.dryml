@@ -36,7 +36,7 @@ Make your choice global with:
       <title param><%= strip_tags full_title %></title>
 
       <do param="stylesheets">
-        <stylesheet name="#{subsite || 'front'}" param="app-stylesheet"/>
+        <stylesheet param="app-stylesheet" name="#{subsite || 'front'}" />
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
