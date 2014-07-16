@@ -7,8 +7,8 @@
     <search-filter:>
       <search-form: style="display: inline;" />
       <label: replace/>
-      <input: class="search-query" placeholder="&t('hobo.table_plus.search', :default=>'Search')"/>
-      <search-submit: remove-class="btn-default" class="btn-small"/>
+      <input: class="form-control search-query" placeholder="&t('hobo.table_plus.search', :default=>'Search')"/>
+      <search-submit: class="btn-small"/>
       <clear-form: style="display: inline;"/>
       <clear-submit: class="btn-small"/>
     </search-filter:>

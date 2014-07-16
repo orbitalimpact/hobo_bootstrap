@@ -1,13 +1,16 @@
 <%# displays the pencil and trash can icons used by the bootstrap index page. %>
+
 <def tag="bootstrap-table-actions">
   <do with="&this_parent">
     <a action="edit" if="&object_url(this, :edit)" param="edit">
-      <i class="icon icon-edit"></i>
+      <i class="glyphicon glyphicon-edit></i>
     </a>
   </do>
   <% if can_delete?(this_parent) %>
     <do param="delete">
-      <a with="&this_parent" action="destroy" method="delete" data-confirm="&t('hobo.messages.confirm', :default=>'Are you sure?')"><i class="icon-trash"></i></a>
+      <a with="&this_parent" action="destroy" method="delete" data-confirm="&t('hobo.messages.confirm', :default=>'Are you sure?')">
+        <i class="glyphicon glyphicon-trash"></i>
+      </a>
     </do>
   <% end %>
 </def>
@@ -90,8 +93,7 @@ and your controller like this
           field_names = field_names.join(', ')
         end
       %>
-      <table class="table table-striped table-bordered" without-header
-        fields="&field_names" param="collection">
+      <table class="table table-striped table-bordered" without-header fields="&field_names" param="collection">
         <actions-label:>
           <t key="hobo.messages.actions">Actions</t>
         </actions-label:>
