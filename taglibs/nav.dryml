@@ -1,13 +1,17 @@
 <!-- Development mode only - a menu to change the `current_user` -->
 <def tag="dev-user-changer">
   <set user="&Hobo::Model::UserBase.default_user_model"/>
-  <select-menu if="&user && Rails.env.development?"
-               first-option="#{t('hobo.dev_user_changer.guest', {:default=>'Guest'})}" options="&user.limit(30).*.login"
-               onchange="location.href = '#{dev_support_path :action=>:set_current_user}?login=' + encodeURIComponent(this.options[this.selectedIndex].value)"
-               selected="#{current_user.login}"
-               class="dev-user-changer selectpicker"
-               data-style="btn-primary"
-               merge-attrs/>
+    <select-menu if="&user && Rails.env.development?"
+                 first-option="#{t('hobo.dev_user_changer.guest', {:default=>'Guest'})}" options="&user.limit(30).*.login"
+                 onchange="location.href = '#{dev_support_path :action=>:set_current_user}?login=' + encodeURIComponent(this.options[this.selectedIndex].value)"
+                 selected="#{current_user.login}"
+                 class="dev-user-changer navbar-form navbar-left selectpicker"
+                 data-style="btn-primary"
+                 merge-attrs/>
+  <script>
+  $('.selectpicker').selectpicker();
+  </script>
+
 </def>
 
 
@@ -116,9 +120,9 @@ This is a simple tag - just look at the source if you need to know more detail.
 
   -->
 <def tag="account-nav" attrs="include-search">
-  <div class="collapse navbar-collapse navbar-right">
+  <div class="collapse navbar-collapse">
     <do with="&current_user">
-      <ul class="navigation account-nav nav navbar-nav" param>
+      <ul class="navigation account-nav nav navbar-nav navbar-right" param>
 
         <li if="&include_search" param="search">
           <live-search param if="&defined_route? :site_search"/>
