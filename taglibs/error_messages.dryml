@@ -1,6 +1,6 @@
 <!-- Renders a localized list of error messages following a form submission.
      Expects the errors to be in `this.errors`.
-    Renders nothing if there are no errors.  -->
+     Renders nothing if there are no errors.  -->
 
 <def tag="error-messages">
   <section class="error-messages alert alert-danger" merge-attrs if="&this.errors.size > 0">

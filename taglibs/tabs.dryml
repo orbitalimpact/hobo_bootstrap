@@ -2,10 +2,10 @@
 
 ### Example
 
-  <bootstrap-tab-list:fragments class="tabs-left" active="&this.fragments.first" >
-    <a:>Page <view:page/></a:>
-    <body:><view:body/></body:>
-  </bootstrap-tab-list:fragments>
+    <bootstrap-tab-list:fragments class="tabs-left" active="&this.fragments.first" >
+      <a:>Page <view:page/></a:>
+      <body:><view:body/></body:>
+    </bootstrap-tab-list:fragments>
 
 ### Attributes
 - active: the element you wish to be initially visible

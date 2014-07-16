@@ -58,21 +58,24 @@ is equivalent to:
        error_class = this_parent.errors[this_field].empty? ? "" : "error"
     -%>
       <div
-         class="control-group #{'required' if required.include?(scope.field_name)} #{error_class}"
+         class="form-group #{'required' if required.include?(scope.field_name)} #{error_class}"
          unless="&(tag == 'input' && no_edit == 'skip' && !can_edit?) || ((tag == 'view' || tag == 'readonly') && no_blanks && this.blank?)"
          param="#{field_method}-field">
 
-        <label class="control-label" for="&id_for_this" param="#{field_method}-label" unless="&field_name.blank?">
+        <label class="col-sm-3 control-label" for="&id_for_this" param="#{field_method}-label" unless="&field_name.blank?">
           <%= field_name %>
         </label>
 
-        <div class="controls">
+        <div class="col-sm-9">
           <do param="#{field_method}-view">
-            <do param="view"><call-tag tag="&tag" param="#{field_method}-tag" merge-attrs="&input_attrs"/></do>
+            <do param="view">
+              <call-tag tag="&tag" class="form-control" param="#{field_method}-tag" merge-attrs="&input_attrs"/>
+            </do>
           </do>
-          <p param="#{field_method}-help" class="help-block" if='&tag.to_sym == :input && (!this_field_help.blank? || parameters.include?("#{field_method}_help".to_sym))'>
+          <span param="#{field_method}-help" class="help-block"
+                if='&tag.to_sym == :input && (!this_field_help.blank? || parameters.include?("#{field_method}_help".to_sym))'>
             <%= this_field_help %>
-          </p>
+          </span>
         </div>
 
       </div>
@@ -82,14 +85,15 @@ is equivalent to:
 
 
 <!-- nodoc. -->
+
 <extend tag="form">
   <old-form: class="form-horizontal" merge>
     <actions: class="form-actions"/>
   </old-form:>
 </extend>
 
-<!--
-Like `<with-fields>`, but groups fields into columns in a bootstrap-friendly fashion.
+
+<!-- Like `<with-fields>`, but groups fields into columns in a bootstrap-friendly fashion.
 
 ### Attributes
 
@@ -97,19 +101,19 @@ Supports all attributes supported by `<with-fields>` plus:
 
 - size: # of columns in the grid system.  Default is 12
 - columns: # of columns.  Default is 1.
-
 -->
+
 <def tag="with-fields-grouped" attrs="size, columns, force-all"><%
-  field_names = with_fields_helper(attributes)
-  field_names = field_names.select {|f| can_view?(this, f)} unless force_all
-  columns = 1 unless columns
-  columns = columns.to_i
-  size = 12 unless size
-  size = size.to_i
-  col_md_size = size / columns
-  field_names_groups = field_names.in_groups(columns, false)
-  row_classes = "row"
-  row_classes += " columns" if columns > 1
+     field_names = with_fields_helper(attributes)
+     field_names = field_names.select {|f| can_view?(this, f)} unless force_all
+     columns = 1 unless columns
+     columns = columns.to_i
+     size = 12 unless size
+     size = size.to_i
+     col_md_size = size / columns
+     field_names_groups = field_names.in_groups(columns, false)
+     row_classes = "row"
+     row_classes += " columns" if columns > 1
   %><div class="#{row_classes}" merge-attrs> <%
   field_names_groups.each do |field_names_group|
     %> <div class="col-md-#{col_md_size}"> <%
@@ -127,7 +131,9 @@ Supports all attributes supported by `<with-fields>` plus:
   %> </div>
 </def>
 
+
 <!-- This tag is used in multiple column forms, when you need a double sized field (address for example) that is still aligned with the rest -->
+
 <def tag="single-field-list" attrs="tag, no-edit, required, no-blanks">
   <% tag ||= scope.in_form ? "input" : "view"; no_edit ||= "skip" -%>
   <% required ||= "" ; required = comma_split(required.gsub('-', '_')) -%>
@@ -139,24 +145,25 @@ Supports all attributes supported by `<with-fields>` plus:
      field_method = scope.field_name.to_s.sub('?', '').gsub('.', '-')
      id_for_this = param_name_for_this.gsub('[', '_').gsub(']', '')
   -%>
-    <div
-      class="control-group #{'required' if required.include?(scope.field_name)}"
-      unless="&(tag == 'input' && no_edit == 'skip' && !can_edit?) || (tag == 'view' && no_blanks && this.blank?)"
-      param="#{field_method}-field">
+    <div class="form-group #{'required' if required.include?(scope.field_name)}"
+         unless="&(tag == 'input' && no_edit == 'skip' && !can_edit?) || (tag == 'view' && no_blanks && this.blank?)"
+         param="#{field_method}-field">
 
-      <label class="control-label" for="&id_for_this" param="#{field_method}-label" unless="&field_name.blank?">
+      <label class="col-sm-3 control-label"> for="&id_for_this" param="#{field_method}-label" unless="&field_name.blank?">
         <%= field_name %>
       </label>
 
-      <div class="controls">
+      <div class="col-sm-9">
         <do param="#{field_method}-view">
-          <do param="view"><call-tag tag="&tag" param="#{field_method}-tag" merge-attrs="&input_attrs"/></do>
+          <do param="view">
+            <call-tag tag="&tag" param="#{field_method}-tag" class="form-control" merge-attrs="&input_attrs"/>
+          </do>
         </do>
-        <p param="#{field_method}-help" class="help-block" if="&tag.to_sym == :input && !this_field_help.blank?">
-          <%= this_field_help %>
-        </p>
-      </div>
 
+        <span param="#{field_method}-help" class="help-block" if="&tag.to_sym == :input && !this_field_help.blank?">
+          <%= this_field_help %>
+        </span>
+      </div>
     </div>
   </with-fields>
 </def>
@@ -194,7 +201,7 @@ Supports all attributes supported by `<with-fields>` plus:
 <def tag="one-line-form" attrs="fields">
   <div class="row">
     <div class="col-md-12">
-      <form class="inline-form well" remove-class="form-horizontal" merge>
+      <form class="inline-form well" role="form" remove-class="form-horizontal" merge>
         <field-list: replace>
           <one-line-field-list param="field-list" fields="&fields"/>
         </field-list:>

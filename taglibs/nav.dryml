@@ -38,18 +38,31 @@ Then in your pages you can call the tag like this
  - and so on.
 
    -->
-<def tag="navigation" attrs="current,include-search">
-  <ul class="navigation" merge-attrs>
-    <set-scoped current-navigation="&current">
-      <do param="default"/>
-      <if test="&include_search">
-        <li class="pull-right">
-          <live-search param if="&defined_route? :site_search"/>
-        </li>
-      </if>
-    </set-scoped>
-  </ul>
-</def>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="navigation nav navbar-nav">
+        <set-scoped current-navigation="&current">
+          <do param="default"/>
+          <if test="&include_search">
+            <li class="pull-right">
+              <live-search param if="&defined_route? :site_search"/>
+            </li>
+          </if>
+        </set-scoped>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 
 
 <!-- Renders a single item in a [`<navigation>`](/api_tag_defs/navigation).
@@ -101,21 +114,47 @@ This is a simple tag - just look at the source if you need to know more detail.
 
   -->
 <def tag="account-nav" attrs="include-search">
-  <div class="nav-collapse collapse">
-  <do with="&current_user">
-    <ul class="navigation account-nav nav pull-right" param>
-      <li if="&include_search" param="search"><live-search param if="&defined_route? :site_search"/></li>
-      <li if="&Rails.env.development?" param="dev-user-changer"><dev-user-changer/></li>
-      <if test="&logged_in?">
-        <li class='nav-item' param="logged-in-as"><a to="&current_user"><t key="hobo.actions.logged_in_as" name="&name">Logged in as <name/></t></a></li>
-        <li class='nav-item' param="account"><a to="&current_user" subsite="" action="account"><t key="hobo.actions.account">Account</t></a></li>
-        <li class='nav-item' param="log-out"><a href="&logout_url"><t key="hobo.actions.logout">Log out</t></a></li>
-      </if>
-      <else>
-        <li class='nav-item' param="log-in"><a href="&login_url"><t key="hobo.actions.login">Log in</t></a></li>
-        <li if="&signup_url" class="nav-item" param="sign-up"><a href="&signup_url"><t key="hobo.actions.signup">Sign up</t></a></li>
-      </else>
-    </ul>
-  </do>
+  <div class="collapse navbar-collapse navbar-right">
+    <do with="&current_user">
+      <ul class="navigation account-nav nav navbar-nav" param>
+
+        <li if="&include_search" param="search">
+          <live-search param if="&defined_route? :site_search"/>
+        </li>
+        <li if="&Rails.env.development?" param="dev-user-changer">
+          <dev-user-changer/>
+        </li>
+        <if test="&logged_in?">
+          <li class='nav-item' param="logged-in-as">
+            <a to="&current_user">
+              <t key="hobo.actions.logged_in_as" name="&name">Logged in as <name/></t>
+            </a>
+          </li>
+          <li class='nav-item' param="account">
+            <a to="&current_user" subsite="" action="account">
+              <t key="hobo.actions.account">Account</t>
+            </a>
+          </li>
+          <li class='nav-item' param="log-out">
+            <a href="&logout_url">
+              <t key="hobo.actions.logout">Log out</t>
+            </a>
+          </li>
+        </if>
+
+        <else>
+          <li class='nav-item' param="log-in">
+            <a href="&login_url">
+              <t key="hobo.actions.login">Log in</t>
+            </a>
+          </li>
+          <li if="&signup_url" class="nav-item" param="sign-up">
+            <a href="&signup_url">
+              <t key="hobo.actions.signup">Sign up</t>
+            </a>
+          </li>
+        </else>
+      </ul>
+    </do>
   </div>
 </def>
