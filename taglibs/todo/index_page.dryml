@@ -84,7 +84,7 @@ and your controller like this
             field_names << "actions"
           end
           # force to work only with strings
-	  field_names.map!(&:to_s)
+    field_names.map!(&:to_s)
           field_names.delete(klass.name_attribute.to_s)
           field_names.unshift("this")
           field_names = field_names.join(', ')

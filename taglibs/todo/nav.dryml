@@ -5,7 +5,7 @@
                first-option="#{t('hobo.dev_user_changer.guest', {:default=>'Guest'})}" options="&user.limit(30).*.login"
                onchange="location.href = '#{dev_support_path :action=>:set_current_user}?login=' + encodeURIComponent(this.options[this.selectedIndex].value)"
                selected="#{current_user.login}"
-               class="dev-user-changer"
+               class="dev-user-changer form-control"
                merge-attrs/>
 </def>
 

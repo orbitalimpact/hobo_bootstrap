@@ -1,6 +1,6 @@
 <extend tag="select-many">
   <old-select-many merge>
-    <remove-button: class="btn btn-small"/>
-    <proto-remove-button: class="btn btn-small"/>
+    <remove-button: class="btn btn-danger btn-small"/>
+    <proto-remove-button: class="btn btn-danger btn-small"/>
   </old-select-many>
 </extend>

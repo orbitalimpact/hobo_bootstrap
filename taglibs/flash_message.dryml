@@ -2,7 +2,7 @@
 
 ### Attributes
 
-- `type`: chooses which flash message to display and also the box style.   The default is `info`.   `error`, `success` and `warning` also have styling.
+- `type`: chooses which flash message to display and also the box style. The default is `info`. `error`, `success` and `warning` also have styling.
 - `no-close`: if set, the alert doesn't have a close button
  -->
 

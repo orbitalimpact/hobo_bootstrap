@@ -1,6 +1,5 @@
-<!--
-Adds bootstrap styling to `<page-nav>`
--->
+<!-- Adds bootstrap styling to `<page-nav>` -->
+
 <extend tag="page-nav">
   <% add_classes!(attributes, "pagination") %>
   <div class="pagination">
