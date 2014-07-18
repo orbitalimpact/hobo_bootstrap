@@ -41,7 +41,7 @@
       </div>
     </div>
 
-    <div class="actions form-actions" style="padding-left:110px;">
+    <div class="actions form-actions" >
       <input class="btn btn-primary button submit-button" type="submit"
              value="#{t 'hobo.actions.login', :default=>['Log in'] }"/>
       <if test="&signup_url" class='nav-item'>

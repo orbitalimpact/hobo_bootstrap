@@ -88,7 +88,13 @@ is equivalent to:
 
 <extend tag="form">
   <old-form: class="form-horizontal" merge>
-    <actions: class="form-actions"/>
+    <actions: replace>
+      <div class="form-group">
+        <div class="col-sm-9 col-sm-offset-3">
+          <actions restore/>
+        </div>
+      </div>
+    </actions:>
   </old-form:>
 </extend>
 
@@ -114,9 +120,7 @@ Supports all attributes supported by `<with-fields>` plus:
      field_names_groups = field_names.in_groups(columns, false)
      row_classes = "row"
      row_classes += " columns" if columns > 1
-  %><div class="#{row_classes}" merge-attrs> <%
   field_names_groups.each do |field_names_group|
-    %> <div class="col-md-#{col_md_size}"> <%
     field_names_group.each do |field|
       %><set-scoped field-name="&field"><%
       if field == "this"
@@ -126,9 +130,8 @@ Supports all attributes supported by `<with-fields>` plus:
       end
       %></set-scoped><%
     end
-    %> </div> <%
   end
-  %> </div>
+  %>
 </def>
 
 
@@ -199,18 +202,14 @@ Supports all attributes supported by `<with-fields>` plus:
 <!-- This tag creates a form in just one line using bootstrap's inline-form -->
 
 <def tag="one-line-form" attrs="fields">
-  <div class="row">
-    <div class="col-md-12">
-      <form class="inline-form well" role="form" remove-class="form-horizontal" merge>
-        <field-list: replace>
-          <one-line-field-list param="field-list" fields="&fields"/>
-        </field-list:>
-        <actions: replace>
-          <button class="btn btn-primary" type="submit" param="submit">
-            +
-          </button>
-        </actions:>
-      </form>
-    </div>
-  </div>
+  <form class="inline-form well" role="form" remove-class="form-horizontal" merge>
+    <field-list: replace>
+      <one-line-field-list param="field-list" fields="&fields"/>
+    </field-list:>
+    <actions: replace>
+      <button class="btn btn-primary" type="submit" param="submit">
+        +
+      </button>
+    </actions:>
+  </form>
 </def>
