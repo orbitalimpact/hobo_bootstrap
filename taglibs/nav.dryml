@@ -59,9 +59,7 @@ Then in your pages you can call the tag like this
           <set-scoped current-navigation="&current">
             <do param="default"/>
             <if test="&include_search">
-              <li class="pull-right">
-                <live-search param if="&defined_route? :site_search"/>
-              </li>
+              <live-search param if="&defined_route? :site_search"/>
             </if>
           </set-scoped>
         </ul>
