@@ -119,7 +119,7 @@ This is a simple tag - just look at the source if you need to know more detail.
   -->
 <def tag="account-nav" attrs="include-search">
   <div class="collapse navbar-collapse">
-    <do with="&current_user">
+    <do with='&current_user'>
       <ul class="navigation account-nav nav navbar-nav navbar-right" param>
 
         <li if="&include_search" param="search">
