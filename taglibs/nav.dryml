@@ -63,6 +63,9 @@ Then in your pages you can call the tag like this
             </if>
           </set-scoped>
         </ul>
+        <ul class="navigation nav navbar-nav navbar-right" role="navigation">
+          <do param="right"/>
+        </ul>
       </div>
     </div>
   </nav>

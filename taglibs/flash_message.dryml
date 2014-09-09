@@ -7,7 +7,7 @@
  -->
 
 <def tag="flash-message" attrs="type">
-  <% type = type ? type.to_sym : :info -%>
+  <% type = type.blank? ? :info : type.to_sym -%>
   <alert-box merge type="&type" if="&flash[type]">
     <%= flash[type] %>
   </alert-box>
