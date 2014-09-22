@@ -91,10 +91,10 @@ ul.collection > li { margin-left: 0; list-style: none; }
 ul.collection { margin-left: 0; }
 
 
-// /* Show page */
-// .show-page .content-body .description{
-//   margin-bottom:10px;
-// }
+/* Show page */
+.show-page .content-body .description{
+  margin-bottom:10px;
+}
 
 
 // /* Icon URLs */
@@ -116,7 +116,7 @@ ul.collection { margin-left: 0; }
 //   font-weight: bold;
 // }
 // .form-horizontal .controls {
-//   padding-top:5px;
+// padding-top:5px;
 // }
 // .form-horizontal input, .form-horizontal textarea, .form-horizontal select, .form-horizontal .help-inline, .form-horizontal .readonly, .form-horizontal .input-prepend, .form-horizontal .input-append {
 //   margin-top:-5px;
@@ -126,9 +126,14 @@ ul.collection { margin-left: 0; }
 //   color: #C62121;
 // }
 // .form-horizontal .actions {
-//   @extend .form-actions;
+//   @extend .form-actions !optional;
 // }
 
+input[type=checkbox].form-control {
+  margin: 0px;
+  width: 20px;
+  box-shadow: none;
+}
 
 
 // /* Sortable collection */
