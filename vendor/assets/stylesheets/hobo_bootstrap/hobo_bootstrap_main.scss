@@ -42,23 +42,26 @@ div.hidden-fields { display:none; }
 }
 
 /* wrap with a position:absolute so the relatively positioned stuff inside doesn't leave a blank space */
-#ajax-progress-wrapper { position: absolute; }
+// #ajax-progress-wrapper { position: absolute; }
 
-/* input-many */
+// /* input-many */
 ul.input-many, ul.input-all {list-style-type: none;}
-ul.input-many > li { display: table-row; }
+ul.input-many > li { display: table-row;
+                     width: 100%; }
 ul.input-many > li > div.input-many-item {display: table-cell;
                                           padding-right: 10px;
                                           padding-top: 20px;
                                           border-right: 1px dotted;
-                                          border-bottom: 1px dotted; }
+                                          border-bottom: 1px dotted;
+                                          width: 92%; }
 
 
 /* li:nth-child(3) is the first visible child; first two are hidden */
 ul.input-many > li:nth-child(3) > div.input-many-item {padding-top: 0px;}
 ul.input-many > li > div.buttons {display: table-cell;
                                   padding-left: 10px;
-                                  vertical-align: middle;}
+                                  vertical-align: middle;
+                                  width: 100px; }
 ul.input-many > li > div.buttons button {@extend .btn}
 ul.input-many > li.input-many-template { display:none; }
 ul.input-many > li.hidden { display:none; }
