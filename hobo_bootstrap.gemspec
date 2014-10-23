@@ -25,5 +25,4 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = ">= 1.3.6"
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib", "vendor", "taglibs"]
-
 end
