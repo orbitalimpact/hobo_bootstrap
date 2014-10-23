@@ -1,7 +1,8 @@
 <!-- Adds bootstrap styling to `<input-many>` -->
 
 <extend tag="input-many">
-  <old-input-many merge>
+  <old-input-many merge-params>
+  <!-- should read merge, but that merges class atribue which brings in class form-control, which breaks layout completely-->
     <field-list: size="0"/>
   </old-input-many>
 </extend>
