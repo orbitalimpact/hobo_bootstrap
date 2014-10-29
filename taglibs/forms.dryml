@@ -43,7 +43,7 @@ is equivalent to:
     </bootstrap-fields>
 
 %>
-<def tag="bootstrap-fields" attrs="size, columns, tag, no-edit, required, no-blanks, input-attrs">
+<def tag="bootstrap-fields" attrs="size, columns, tag, no-edit, required, no-blanks, input-attrs, disabled">
   <% tag ||= scope.in_form ? "input" : "view"; no_edit ||= "skip" -%>
   <% required ||= "" ; required = comma_split(required.gsub('-', '_')) -%>
   <div merge-attrs="&attributes - attrs_for(:with_fields)">
@@ -53,6 +53,7 @@ is equivalent to:
     <% field_name = this_field_name
        input_attrs ||= {}
        input_attrs[:no_edit] = no_edit if tag == "input" && no_edit == "disable"
+       input_attrs[:disabled] = disabled if disabled
        field_method = scope.field_name.to_s.sub('?', '').gsub('.', '-')
        id_for_this = param_name_for_this.gsub('[', '_').gsub(']', '')
        error_class = this_parent.errors[this_field].empty? ? "" : "error"
