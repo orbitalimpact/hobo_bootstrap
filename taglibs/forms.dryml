@@ -70,7 +70,12 @@ is equivalent to:
         <div class="col-sm-9">
           <do param="#{field_method}-view">
             <do param="view">
-              <call-tag tag="&tag" class="form-control" param="#{field_method}-tag" merge-attrs="&input_attrs"/>
+              <if test="&disabled"> <!-- FIXME: this is a mess -->
+                <call-tag tag="&tag" param="#{field_method}-tag" merge-attrs="&input_attrs"/>
+              </if>
+              <else>
+                <call-tag tag="&tag" class="form-control" param="#{field_method}-tag" merge-attrs="&input_attrs"/>
+              </else>
             </do>
           </do>
           <span param="#{field_method}-help" class="help-block"
