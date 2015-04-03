@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description = 'A bootstrap based theme for Hobo'
 
   s.add_runtime_dependency 'hobo_jquery', ">= 2.0"
-  s.add_runtime_dependency "bootstrap-sass", "~> 3.3.1"
+  s.add_runtime_dependency "bootstrap-sass", "~> 3.3.4"
 
   # https://github.com/twbs/bootstrap-sass
   s.add_runtime_dependency 'sass-rails', '>= 3.2'
