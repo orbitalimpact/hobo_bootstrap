@@ -126,7 +126,9 @@ Supports all attributes supported by `<with-fields>` plus:
      field_names_groups = field_names.in_groups(columns, false)
      row_classes = "row"
      row_classes += " columns" if columns > 1
+  %><div class='#{row_classes}' merge-attrs> <%
   field_names_groups.each do |field_names_group|
+    %> <div class='col-md-#{col_md_size}'> <%
     field_names_group.each do |field|
       %><set-scoped field-name="&field"><%
       if field == "this"
@@ -136,10 +138,10 @@ Supports all attributes supported by `<with-fields>` plus:
       end
       %></set-scoped><%
     end
+    %> </div> <%
   end
-  %>
+  %> </div>
 </def>
-
 
 <!-- This tag is used in multiple column forms, when you need a double sized field (address for example) that is still aligned with the rest -->
 
