@@ -5,7 +5,7 @@
   <% attributes[:update] ||= "search-results-part" %>
   <% attributes[:message] ||= t("hobo.live_search.spinner_message", :default => "Querying...") %>
   <% query_param ||= "query" %>
-  <div class='search navbar-right' data-rapid='{"live-search": {}}'>
+  <div class='search' data-rapid='{"live-search": {}}'>
     <form refocus-form merge-attrs param with='&nil' class='navbar-form'>
       <div class="form-group">
         <input name='search_version' type='hidden' value='2'/>
