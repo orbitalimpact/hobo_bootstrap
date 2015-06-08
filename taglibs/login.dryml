@@ -51,7 +51,7 @@
         </a>
       </if>
       <if test="&forgot_password_url">
-        or
+        <t key="hobo.support.or">or</t>
         <a href="&forgot_password_url" param="forgot-password">
           <t key="hobo.login.forgot_password">Forgot your password?</t>
         </a>
