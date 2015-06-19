@@ -9,6 +9,7 @@
 <def tag="alert-box" attrs="type, no-close">
   <% type = type.empty? ? :info : type.to_sym -%>
   <% type = :info if type == :notice -%>
+  <% type = :danger if type == :error -%>
   <div class="alert alert-#{type}" role="alert" unless="&no_close" merge-attrs>
     <button type="button" class="close" data-dismiss="alert">
       <span aria-hidden="true">&times;</span>
