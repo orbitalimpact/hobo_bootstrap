@@ -11,12 +11,13 @@ Gem::Specification.new do |s|
   s.summary = 'A bootstrap based theme for Hobo'
   s.description = 'A bootstrap based theme for Hobo'
 
-  s.add_runtime_dependency 'hobo_jquery', ">= 2.0"
-  s.add_runtime_dependency "bootstrap-sass", "~> 3.3.4"
-
   # https://github.com/twbs/bootstrap-sass
-  s.add_runtime_dependency 'sass-rails', '>= 3.2'
+  s.add_runtime_dependency 'sass-rails', '>= 5.0.3'
   s.add_runtime_dependency 'sprockets-rails', '>= 2.1.4'
+
+  s.add_runtime_dependency 'hobo_jquery', ">= 2.0"
+  s.add_runtime_dependency "bootstrap-sass", "~> 3.3.5.1"
+
   s.add_runtime_dependency "hobo_will_paginate-bootstrap"
 
   s.files = `git ls-files -x #{name}/* -z`.split("\0")
