@@ -2,11 +2,14 @@
 @import "bootstrap";
 
 // HAS 20140715 Most settings in the file are disabled, but we still import it
-@import "hobo_bootstrap/hobo_bootstrap_main";  // bootstrap stylings for hobo components
+
+// bootstrap stylings for hobo components
+@import "hobo_bootstrap/hobo_bootstrap_main";
+
+// Bootstrap-Select from http://silviomoreto.github.io/bootstrap-select/3/
+@import "hobo_bootstrap/bootstrap-select.min";
 
 // HAS 20140715 Bootstrap is now 'responsive first'
 // @import "bootstrap-responsive"; // Main responsive file
 // @import "hobo_bootstrap/hobo_bootstrap_responsive"; // Hobo responsive workarounds
 // @import "hobo_bootstrap/hobo_bootstrap_docs";
-
-@import "hobo_bootstrap/bootstrap-select.min"; // Bootstrap-Select from http://silviomoreto.github.io/bootstrap-select/3/
