@@ -1,13 +1,26 @@
-<!--
-Adds bootstrap styling to `<live-search>`
--->
-<extend tag="live-search">
-  <old-live-search remove-class="form-horizontal">
-    <label: replace/>
-    <form: class="form-search"/>
-    <input: placeholder="&t('hobo.live_search.label', :default => 'Search')" class="search-query"/>
-    <after-input:>
-      <i class="icon-search"></i>
-    </after-input:>
-  </old-live-search>
-</extend>
+<!-- Adds bootstrap styling to `<live-search>` -->
+
+<def attrs='query-param, panel-tag' tag='live-search'>
+  <% attributes[:action] ||= site_search_path %>
+  <% attributes[:update] ||= "search-results-part" %>
+  <% attributes[:message] ||= t("hobo.live_search.spinner_message", :default => "Querying...") %>
+  <% query_param ||= "query" %>
+  <div class='search' data-rapid='{"live-search": {}}'>
+    <form refocus-form merge-attrs param with='&nil' class='navbar-form'>
+      <div class="form-group">
+        <input name='search_version' type='hidden' value='2'/>
+        <input name='&query_param' param type='search'
+               placeholder="&t('hobo.live_search.label', :default => 'Search')"
+               class="live-search form-control search-query"/>
+      </div>
+      <button class="btn btn-primary" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </form>
+    <do part='search-results-part'>
+      <if test='&defined?(@search_results)'>
+        <search-results-container title='&t(&apos;hobo.live_search.results_label&apos;, :default => &apos;Search Results&apos;)' with='&@search_results || []'/>
+      </if>
+    </do>
+  </div>
+</def>

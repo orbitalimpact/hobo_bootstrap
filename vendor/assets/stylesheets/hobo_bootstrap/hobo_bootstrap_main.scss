@@ -1,56 +1,36 @@
-
-/* Top menu bar (app name, login...): 
-   It's full width so border-radius is unnecessary */
-.navbar-inner{
-  border-radius:0px;
-}
 /* Top menu tweaks */
 .dev-user-changer{
-  margin-top:3px;
-  opacity:0.8;
-  border-radius:4px;
+  margin-top: 8px;
+  opacity: 0.8;
+  border-radius: 4px;
 }
-.dev-user-changer select{
-  margin-bottom:5px;
-}
-
-
-
+.dev-user-changer select{ margin-bottom: 5px; }
 
 
 /* Main menu bar (model links): search box*/
-.form-search{
-  margin:4px 4px 0 0;
-}
+.form-search{ margin:4px 4px 0 0; }
 .form-search i {
   margin: -22px 0 0 178px;
   display: block;
   position:absolute;
 }
-#search-results-part{
-  display:none;
-}
-
-
+#search-results-part{ display:none; }
 
 
 /* Page heading */
-.bootstrap-content{
-  margin-top:16px;
-}
+.bootstrap-content{ margin-top:16px; }
 h2.heading{
-  margin-bottom:10px;
+  margin-bottom: 10px;
   line-height:24px;
 }
 .index-page h2.heading{
-  margin-bottom:0px;
-  line-height:26px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  line-height: 26px;
 }
 
 /*  hidden-fields */
-div.hidden-fields {
-  display:none;
-}
+div.hidden-fields { display:none; }
 
 /* spinner */
 .ajax-progress{
@@ -62,34 +42,38 @@ div.hidden-fields {
 }
 
 /* wrap with a position:absolute so the relatively positioned stuff inside doesn't leave a blank space */
-#ajax-progress-wrapper {
-  position: absolute;
-}
+// #ajax-progress-wrapper { position: absolute; }
 
-/* input-many */
-ul.input-many {list-style-type: none;}
-ul.input-all  {list-style-type: none;}
+// /* input-many */
+ul.input-many, ul.input-all {list-style-type: none;}
+ul.input-many > li { display: table-row;
+                     width: 100%; }
+ul.input-many > li > div.input-many-item {display: table-cell;
+                                          padding-right: 10px;
+                                          padding-top: 20px;
+                                          border-right: 1px dotted;
+                                          border-bottom: 1px dotted;
+                                          width: 92%; }
 
-ul.input-many > li { display: table-row; }
-ul.input-many > li > div.input-many-item {display: table-cell; padding-right: 10px; padding-top: 20px; border-right: 1px dotted; border-bottom: 1px dotted; }
+
 /* li:nth-child(3) is the first visible child; first two are hidden */
 ul.input-many > li:nth-child(3) > div.input-many-item {padding-top: 0px;}
-ul.input-many > li > div.buttons {display: table-cell; padding-left: 10px; vertical-align: middle;}
+ul.input-many > li > div.buttons {display: table-cell;
+                                  padding-left: 10px;
+                                  vertical-align: middle;
+                                  width: 100px; }
 ul.input-many > li > div.buttons button {@extend .btn}
 ul.input-many > li.input-many-template { display:none; }
 ul.input-many > li.hidden { display:none; }
 
 
 /* Index page fix */
-.index-page .content-body .table{
-  clear:both;
-}
+.index-page .content-body .table{ clear:both; }
 
 
 /* collection */
-ul.collection > li { margin-left: 0; list-style: none;}
-ul.collection { margin-left: 0;}
-
+ul.collection > li { margin-left: 0; list-style: none; }
+ul.collection { margin-left: 0; }
 
 
 /* Show page */
@@ -98,41 +82,33 @@ ul.collection { margin-left: 0;}
 }
 
 
-
 /* Icon URLs */
-[class^="icon-"], [class*=" icon-"] {
-  background-image: image-url("glyphicons-halflings.png");
-}
-.icon-white {
-    background-image: image-url("glyphicons-halflings-white.png");
-}
+// [class^="icon-"], [class*=" icon-"] { background-image: image-url("glyphicons-halflings.png"); }
+// .icon-white { background-image: image-url("glyphicons-halflings-white.png"); }
 
 
 /* The hidden class is used by Hobo */
-.hidden{
-  display:none;
-}
-
+.hidden { display:none; }
 
 
 /* Field-lists alignment and details*/
-.form-horizontal .control-label {
-  font-weight: bold;
-}
-.form-horizontal .controls {
-  padding-top:5px;
-}
-.form-horizontal input, .form-horizontal textarea, .form-horizontal select, .form-horizontal .help-inline, .form-horizontal .uneditable-input, .form-horizontal .input-prepend, .form-horizontal .input-append {
+.form-horizontal .control-label { font-weight: bold; }
+.form-horizontal .controls { padding-top:5px; }
+.form-horizontal input, .form-horizontal textarea, .form-horizontal select,
+.form-horizontal .help-inline, .form-horizontal .readonly, .form-horizontal .input-prepend, .form-horizontal .input-append {
   margin-top:-5px;
 }
 .control-group.required .control-label:after {
   content:"*";
   color: #C62121;
 }
-.form-horizontal .actions {
-  @extend .form-actions;
-}
+.form-horizontal .actions { @extend .form-actions !optional; }
 
+input[type=checkbox].form-control {
+  margin: 0px;
+  width: 20px;
+  box-shadow: none;
+}
 
 
 /* Sortable collection */
@@ -147,39 +123,30 @@ div.ordering-handle {
 }
 
 
-
 /* Select-many */
 .select-many .items{
   width: 100%;
   display: table;
   margin-bottom: 3px;
 }
-.select-many .item{
-  display: table-row;
-}
-.select-many .item * {
-  display: table-cell;
-  margin-bottom: 5px;
-}
-.select-many optgroup.disabled-option {
-  color: #BBBBBB;
-  height: 1em;
-}
-
+.select-many .item{ display: table-row; }
+.select-many .item * { display: table-cell;
+                       margin-bottom: 5px; }
+.select-many optgroup.disabled-option { color: #BBBBBB;
+                                        height: 1em; }
 
 /* Table plus search */
-.table-plus .header .search{
-  padding-bottom:5px;
-}
-.table-plus .header .search .submit-button{
-  margin-left:5px;
-}
-
+.table-plus .header .search{ padding-bottom:5px; }
+.table-plus .header .search .submit-button{ margin-left:5px; }
 
 /* check-many */
-.check-many {
-  list-style-type: none;
-}
-.check-many li label {
-  display: inline;
-}
+.check-many { list-style-type: none; }
+.check-many li label { display: inline; }
+
+/* there was too much space to the pagination*/
+.pagination { margin-top: 0px;
+              margin-bottom: 10px; }
+
+.navbar-form .form-group { margin: 5px; }
+.navbar-form .btn { padding-top: 5px; 
+                    padding-bottom: 5px; }

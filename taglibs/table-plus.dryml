@@ -1,17 +1,16 @@
-<!--
-Adds bootstrap styling to `<table-plus>`
--->
+<!-- Adds bootstrap styling to `<table-plus>` -->
+
 <extend tag="table-plus">
   <old-table-plus merge>
     <table: class="table table-striped table-bordered" style="clear: both;"/>
     <header: style="float: right;"/>
     <search-filter:>
-      <search-form: class="form-search" remove-class="form-horizontal" style="display: inline;" />
+      <search-form: class="form-inline" style="display: inline-block;"/>
       <label: replace/>
-      <input: class="search-query" placeholder="&t('hobo.table_plus.search', :default=>'Search')"/>
-      <search-submit: remove-class="btn-primary" class="btn-small"/>
-      <clear-form: class="form-search" remove-class="form-horizontal" style="display: inline;"/>
-      <clear-submit: class="btn-small"/>
+      <input: class="form-control search-query input-sm" placeholder="&t('hobo.table_plus.search', :default=>'Search')"/>
+      <search-submit: class="btn-sm"/>
+      <clear-form: class="form-inline" style="display: inline-block;"/>
+      <clear-submit: class="btn-sm"/>
     </search-filter:>
   </old-table-plus>
 </extend>

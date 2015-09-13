@@ -1,7 +1,9 @@
-<!-- Renders a localized list of error messages following a form submission. Expects the errors to be in `this.errors`. Renders nothing if there are no errors.
-  -->
+<!-- Renders a localized list of error messages following a form submission.
+     Expects the errors to be in `this.errors`.
+     Renders nothing if there are no errors.  -->
+
 <def tag="error-messages">
-  <section class="error-messages alert" merge-attrs if="&this.errors.size > 0">
+  <section class="error-messages alert alert-danger" merge-attrs if="&this.errors.size > 0">
     <h2 param="heading">
       <t key="activerecord.errors.template.header" model="&this.class.model_name.human" count="&this.errors.size">
         <%= model = this.class.model_name.human
@@ -11,6 +13,7 @@
         %>
       </t>
     </h2>
+
     <t key="activerecord.errors.template.body">There were problems with the following fields:</t>
     <ul param class="alert-block">
       <% this.errors.to_a.each do |message| -%>

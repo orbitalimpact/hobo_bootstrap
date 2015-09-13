@@ -30,12 +30,23 @@ Make your choice global with:
   <% full_title ||= "#{title} : #{app_name}" %>
   <html lang="en" merge-attrs>
     <head param>
+      <meta charset="utf-8"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
       <title param><%= strip_tags full_title %></title>
-      <do param="stylesheets"><%# in Hobo <= 1.3, we had other stylesheets here.   Now the asset pipeline is preferred. %>
-        <stylesheet name="#{subsite || 'front'}" param="app-stylesheet"/>
+
+      <do param="stylesheets">
+        <stylesheet param="app-stylesheet" name="#{subsite || 'front'}" />
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
       </do>
 
-      <do param="scripts" if="&!bottom_load_javascript"><%# in Hobo <= 1.3, we had other javascripts here.   Now the asset pipeline is preferred. %>
+      <do param="scripts" if="&!bottom_load_javascript">
         <javascript param="application-javascript" name="#{subsite || 'front'}"/>
         <do param="custom-scripts">
           <script type="text/javascript">
@@ -43,6 +54,7 @@ Make your choice global with:
           </script>
         </do>
       </do>
+
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <%= csrf_meta_tag %>
     </head>
@@ -50,24 +62,24 @@ Make your choice global with:
     <body param>
       <set-scoped flash-rendered="&false">
         <ajax-progress param/>
-        <div class="navbar" param="navbar">
-          <div class="navbar-inner" param="navbar-innner">
-            <header class="container" param>
-              <a href="#" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </a>
-              <div param="app-name">
-                <a class="brand" href="#{base_url}/"><app-name/></a>
-              </div>
-              <main-nav class="nav" current="&title" param if="&nav_location.blank? || nav_location=='top'" />
-              <account-nav if="&login_url(Hobo::Model::UserBase.default_user_model)" include-search="&nav_location.blank? || nav_location=='top'" param/>
-            </header>
-          </div>
+
+        <div class="navbar navbar-default" param="navbar">
+          <header class="navbar-header" param>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+            </button>
+
+            <div param="app-name">
+              <a class="navbar-brand" href="#{base_url}/"><app-name/></a>
+            </div>
+          </header>
+          <main-nav class="nav" current="&title" param if="&nav_location.blank? || nav_location=='top'" />
+          <account-nav if="&login_url(Hobo::Model::UserBase.default_user_model)" include-search="&nav_location.blank? || nav_location=='top'" param/>
         </div>
+
         <div class="container" param="nav-container" if="&nav_location=='sub'">
-          <div class="subnav" param="subnav">
+          <div class="subnav navbar" param="subnav">
             <main-nav class="nav nav-pills" current="&title" include-search param/>
           </div>
         </div>
@@ -75,7 +87,7 @@ Make your choice global with:
           if all_parameters[:aside]
             attributes[:content_size] ||= "9"
             attributes[:aside_size] ||= (12 - attributes[:content_size].to_i).to_s
-            aside_span = "span" + attributes[:aside_size]
+            aside_col_md = "col-md-" + attributes[:aside_size]
             aside_location ||= 'right'
           else
             attributes[:content_size] = "12" unless attributes[:content_size]
@@ -83,12 +95,12 @@ Make your choice global with:
         %>
         <div class="container bootstrap-content" param="container">
           <div class="row" param="main-row">
-            <div class="#{aside_span}" if="&all_parameters[:aside] && aside_location=='left'" param="aside-column">
+            <div class="#{aside_col_md}" if="&all_parameters[:aside] && aside_location=='left'" param="aside-column">
               <div class="well">
                 <section param="aside"/>
               </div>
             </div>
-            <div class="span#{attributes[:content_size]}" param="main-column">
+            <div class="col-md-#{attributes[:content_size]}" param="main-column">
               <section with-flash-messages param="content">
                 <section param="main-content">
                   <header param="content-header"/>
@@ -96,7 +108,7 @@ Make your choice global with:
                 </section>
               </section>
             </div>
-            <div class="#{aside_span}" if="&all_parameters[:aside] && aside_location=='right'" param="aside-column">
+            <div class="#{aside_col_md}" if="&all_parameters[:aside] && aside_location=='right'" param="aside-column">
               <div class="well">
                 <section param="aside"/>
               </div>
@@ -106,6 +118,7 @@ Make your choice global with:
 
         <footer class="page-footer" param/>
         <page-scripts param/>
+
         <if test="&bottom_load_javascript">
           <script defer type="text/javascript">
               (function() {
