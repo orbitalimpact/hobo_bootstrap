@@ -1,4 +1,8 @@
-This is a theme for Hobo 1.4 (http://www.hobocentral.net) that implements the Bootstrap library (http://twitter.github.com/bootstrap/).
+This is a theme for Hobo (http://www.hobocentral.net) that implements the Bootstrap library (http://twitter.github.com/bootstrap/).
+
+This gem wraps common Hobo tags (such as <submit>, <table-plus>, <edit-page> and many others), to be rendered using Bootstrap styling and adds new tags such as <bootstrap-table-actions> to provide icons for Edit and Delete links in tables. 
+  
+This gem pulls in the bootstrap-sass gem which provides all of the Bootstrap stylesheets, images, fonts etc. 
 
 # hobo_bootstrap
 <hr/>
@@ -14,8 +18,7 @@ Install instructions
 
 Add this to your Gemfile
 
-    gem "hobo_bootstrap", :git => "git://github.com/Hobo/hobo_bootstrap.git"
-{.ruby}
+    gem "hobo_bootstrap"
 
 Run bundle to get the gems
 
@@ -24,19 +27,16 @@ Run bundle to get the gems
 Add to your front.scss:
 
      *= require hobo_bootstrap
-{.css}
 
 Add to your front.js:
 
     //= require hobo_bootstrap
-{.javascript}
 
 Alternatively, you could require bootstrap-collapse and bootstrap-alert, since those are the only two javascript components that this theme currently requires.   However, we do plan on supporting more in the future.
 
 Change the theme in app/views/taglibs/front_site.dryml:
 
     <include gem='hobo_bootstrap'/>
-{.dryml}
 
 You will also want to remove any references to your previous theme in the above files.  `hobo_clean` is the name of the old default Hobo theme.
 
@@ -57,8 +57,6 @@ In order to enable the sub menu, add these lines to your front_site.dryml:
     <extend tag="page">
       <old-page merge nav-location="sub">
     </extend>
-{.dryml}
-
 
 
 
