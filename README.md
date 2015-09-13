@@ -1,7 +1,10 @@
-This is a theme for Hobo 1.4 (http://www.hobocentral.net) that implements the Bootstrap library (http://twitter.github.com/bootstrap/).
+This is a theme for Hobo (http://www.hobocentral.net) that implements the Bootstrap 3.x library (http://twitter.github.com/bootstrap/).
+
+This gem wraps common Hobo tags (such as submit, table-plus, edit-page and many others), to be rendered using Bootstrap styling and adds new tags such as bootstrap-table-actions to provide icons for Edit and Delete links in tables. 
+  
+This gem pulls in the bootstrap-sass gem which provides all of the Bootstrap stylesheets, images, fonts etc. 
 
 # hobo_bootstrap
-<hr/>
 
 [![index][1]][1]
 [![login][2]][2]
@@ -10,12 +13,9 @@ This is a theme for Hobo 1.4 (http://www.hobocentral.net) that implements the Bo
 
 Install instructions
 ====================
-<hr/>
-
 Add this to your Gemfile
 
-    gem "hobo_bootstrap", :git => "git://github.com/Hobo/hobo_bootstrap.git"
-{.ruby}
+    gem "hobo_bootstrap", :git => 'https://github.com/informatom/hobo_bootstrap.git', :branch => 'bootstrap3'
 
 Run bundle to get the gems
 
@@ -24,25 +24,21 @@ Run bundle to get the gems
 Add to your front.scss:
 
      *= require hobo_bootstrap
-{.css}
 
 Add to your front.js:
 
     //= require hobo_bootstrap
-{.javascript}
 
 Alternatively, you could require bootstrap-collapse and bootstrap-alert, since those are the only two javascript components that this theme currently requires.   However, we do plan on supporting more in the future.
 
 Change the theme in app/views/taglibs/front_site.dryml:
 
     <include gem='hobo_bootstrap'/>
-{.dryml}
 
 You will also want to remove any references to your previous theme in the above files.  `hobo_clean` is the name of the old default Hobo theme.
 
 Two main menu options
 =====================
-<hr/>
 
 By default, hobo_bootstrap puts every option in the top menu, like this:
 
@@ -57,14 +53,11 @@ In order to enable the sub menu, add these lines to your front_site.dryml:
     <extend tag="page">
       <old-page merge nav-location="sub">
     </extend>
-{.dryml}
-
 
 
 
 Responsive template
 ===================
-<hr/>
 
 This theme includes the bootstrap responsive CSS, which makes it work nicely with mobile phones. For example:
 
@@ -115,7 +108,6 @@ Any other theme you find or buy will probably be delivered as CSS or LESS rather
 
 Complex forms
 =============
-<hr/>
 
 By default, forms only have one column. But many you need more complex forms. Take a look at these examples:
 
@@ -190,7 +182,6 @@ By default, forms only have one column. But many you need more complex forms. Ta
 
 Demo app
 ========
-<hr/>
 
 I have been using a demo application to test this theme (the screenshots come from it). It has:
 * Examples of complex forms (1/2/3 columns, aside, double sized fields...)
@@ -202,8 +193,6 @@ You can download and take a look at it on https://github.com/suyccom/sgagility
 
 Notes
 =====
-<hr/>
-
 Right now, you still need to keep "hobo_clean" in your Gemfile if you want to use the Ajax search enabled by default in Hobo.
 
 
