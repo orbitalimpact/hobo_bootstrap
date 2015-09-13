@@ -1,4 +1,4 @@
-This is a theme for Hobo (http://www.hobocentral.net) that implements the Bootstrap library (http://twitter.github.com/bootstrap/).
+This is a theme for Hobo (http://www.hobocentral.net) that implements the Bootstrap 3.x library (http://twitter.github.com/bootstrap/).
 
 This gem wraps common Hobo tags (such as submit, table-plus, edit-page and many others), to be rendered using Bootstrap styling and adds new tags such as bootstrap-table-actions to provide icons for Edit and Delete links in tables. 
   
@@ -15,7 +15,7 @@ Install instructions
 ====================
 Add this to your Gemfile
 
-    gem "hobo_bootstrap"
+    gem "hobo_bootstrap", :git => 'https://github.com/informatom/hobo_bootstrap.git', :branch => 'bootstrap3'
 
 Run bundle to get the gems
 
